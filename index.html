@@ -946,22 +946,22 @@
             }
         }
         
-        /* ========================================
-           모바일 통계 라벨 수정 지점 (768px)
-        ======================================== */
         @media (max-width: 768px) {
+            /* ========================================
+               모바일 통계 라벨 수정 지점 
+            ======================================== */
             .hero {
-                /* min-height를 auto로 변경하여 내용물에 맞게 높이 조절 */
+                /* vh 고정 높이를 제거하고, padding으로 높이를 확보합니다. */
                 min-height: auto; 
-                /* 내부 패딩을 주어 높이를 확보 (웨이브 높이 고려) */
-                padding: 6rem 0 8rem 0; 
+                /* 콘텐츠 + 상하 여백 + 웨이브 높이를 고려한 패딩 */
+                padding: 5rem 0 8rem 0; 
             }
             
             .hero-content {
-                /* 내부 수직 패딩 제거, hero의 패딩이 공간을 만듦 */
+                /* hero 영역 자체에 패딩이 있으므로, 내부 패딩은 좌우만 설정 */
                 padding: 0 1.5rem; 
             }
-            
+
             .hero-badge {
                 margin-bottom: 1.5rem;
             }
@@ -983,14 +983,17 @@
             }
 
             .stat-number {
-                font-size: 2rem; /* 폰트 크기 조정 */
+                font-size: 2rem;
                 margin-bottom: 0.25rem;
             }
 
             .stat-label {
-                font-size: 0.8125rem; /* 폰트 크기 살짝 키움 */
+                font-size: 0.8125rem; 
                 display: block; /* 라벨이 항상 보이도록 강제 */
             }
+            /* ========================================
+               (수정 완료)
+            ======================================== */
             
             .search-card {
                 padding: 1.5rem;
@@ -1052,10 +1055,18 @@
             .hero h1 {
                 font-size: 2rem;
             }
+
+            .hero {
+                 padding-top: 4rem; /* 더 좁은 화면 패딩 조정 */
+            }
             
-            /* 통계(hero-stats, stat-number, stat-label) 관련 규칙은 
-              768px 미디어 쿼리에서 이미 처리되었으므로 여기서는 중복 선언 안함
-            */
+            .stat-number {
+                font-size: 1.875rem; /* 더 좁은 화면 폰트 조정 */
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
             
             .search-input {
                 padding: 1rem 1rem 1rem 3.5rem;
@@ -1550,7 +1561,11 @@
             state.filteredData = businessData.filter(b => {
                 if (state.searchQuery) {
                     const q = state.searchQuery.toLowerCase();
-                    if (![b.businessName, b.address, b.feature].some(f => f.toLowerCase().includes(q))) {
+                    
+                    /* ========================================
+                       검색 오류(TypeError) 수정 지점
+                    ======================================== */
+                    if (![b.businessName, b.address, b.feature].some(f => String(f).toLowerCase().includes(q))) {
                         return false;
                     }
                 }
