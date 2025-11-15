@@ -22,15 +22,12 @@
         }
         
         :root {
-            /* 모던한 색상 팔레트 */
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --primary-color: #6366f1;
-            --primary-light: #818cf8;
-            --primary-dark: #4f46e5;
-            --secondary-color: #8b5cf6;
-            --accent-color: #ec4899;
+            /* 미니멀 색상 팔레트 */
+            --primary-color: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
             
-            --text-dark: #1e293b;
+            --text-dark: #0f172a;
             --text-light: #64748b;
             --text-muted: #94a3b8;
             
@@ -39,11 +36,15 @@
             --bg-light: #ffffff;
             
             --success-color: #10b981;
-            --warning-color: #f59e0b;
             --error-color: #ef4444;
             --info-color: #3b82f6;
             
             --yellow-star: #fbbf24;
+            
+            /* 버튼 색상 - 통일된 뉴트럴 톤 */
+            --button-bg: #f1f5f9;
+            --button-hover: #e2e8f0;
+            --button-text: #475569;
             
             /* 그림자 */
             --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -65,7 +66,7 @@
             font-family: "Inter", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
-            background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+            background: var(--bg-gray);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -119,7 +120,7 @@
         
         /* ========== 헤더 ========== */
         .header {
-            background: var(--primary-gradient);
+            background: var(--primary-color);
             color: white;
             padding: 3rem 1.5rem 4rem;
             text-align: center;
@@ -128,15 +129,7 @@
         }
         
         .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="white"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="white"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="white"/></svg>') bottom center no-repeat;
-            background-size: cover;
-            opacity: 0.1;
+            display: none;
         }
         
         .header-content {
@@ -304,22 +297,19 @@
         }
         
         .chip:hover {
-            border-color: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
+            border-color: var(--text-dark);
         }
         
         .chip[aria-checked="true"] {
-            background: var(--primary-gradient);
+            background: var(--primary-color);
             color: white;
-            border-color: transparent;
-            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
         }
         
         .chip.all-chip {
-            background: var(--primary-gradient);
+            background: var(--text-dark);
             color: white;
-            border-color: transparent;
+            border-color: var(--text-dark);
             font-weight: 700;
         }
         
@@ -364,13 +354,12 @@
             min-width: 28px;
             height: 28px;
             padding: 0 0.625rem;
-            background: var(--primary-gradient);
+            background: var(--primary-color);
             color: white;
             border-radius: var(--border-radius-full);
             font-size: 0.8125rem;
             font-weight: 700;
             animation: pulse 0.6s ease;
-            box-shadow: var(--shadow-sm);
         }
         
         @keyframes pulse {
@@ -433,7 +422,7 @@
         }
         
         .error-state {
-            background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+            background: #fef2f2;
             border: 2px solid #fecaca;
             border-radius: var(--border-radius-lg);
             padding: 3rem 2rem;
@@ -505,12 +494,12 @@
             align-items: center;
             gap: 0.25rem;
             padding: 0.375rem 0.75rem;
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            background: var(--bg-gray);
+            border: 1px solid var(--border-color);
             border-radius: var(--border-radius-full);
             font-size: 0.75rem;
-            font-weight: 700;
-            color: #166534;
-            box-shadow: var(--shadow-xs);
+            font-weight: 600;
+            color: var(--text-dark);
         }
         
         /* ========== 카드 뷰 ========== */
@@ -532,16 +521,15 @@
         }
         
         .business-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary-light);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
         
         .card-image {
             width: 100%;
             height: 220px;
             object-fit: cover;
-            background: linear-gradient(135deg, var(--bg-gray) 0%, #e2e8f0 100%);
+            background: var(--bg-gray);
             transition: opacity 0.3s ease;
         }
         
@@ -594,12 +582,11 @@
         .tag {
             display: inline-block;
             padding: 0.375rem 0.875rem;
-            background: var(--primary-gradient);
+            background: var(--text-dark);
             color: white;
             border-radius: var(--border-radius-full);
             font-size: 0.75rem;
-            font-weight: 700;
-            box-shadow: var(--shadow-xs);
+            font-weight: 600;
             letter-spacing: 0.02em;
         }
         
@@ -634,7 +621,7 @@
             margin-top: 1px;
         }
         
-        /* ========== 원형 액션 버튼 (모던 디자인) ========== */
+        /* ========== 원형 액션 버튼 (미니멀 디자인) ========== */
         .card-actions {
             display: flex;
             gap: 0.75rem;
@@ -649,8 +636,8 @@
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            border: none;
-            background: var(--bg-gray);
+            border: 2px solid var(--border-color);
+            background: var(--bg-light);
             color: var(--text-dark);
             cursor: pointer;
             font-size: 1.5rem;
@@ -659,7 +646,6 @@
             align-items: center;
             justify-content: center;
             transition: var(--transition);
-            box-shadow: var(--shadow-xs);
         }
         
         .action-btn::after {
@@ -668,7 +654,7 @@
             bottom: -32px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
+            background: var(--text-dark);
             color: white;
             padding: 0.375rem 0.75rem;
             border-radius: var(--border-radius-sm);
@@ -682,8 +668,10 @@
         }
         
         .action-btn:hover {
-            transform: translateY(-4px) scale(1.1);
-            box-shadow: var(--shadow-lg);
+            background: var(--text-dark);
+            color: white;
+            border-color: var(--text-dark);
+            transform: translateY(-2px);
         }
         
         .action-btn:hover::after {
@@ -691,28 +679,7 @@
         }
         
         .action-btn:active {
-            transform: translateY(-2px) scale(1.05);
-        }
-        
-        /* 개별 버튼 색상 */
-        .action-btn.phone {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-        }
-        
-        .action-btn.map {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-        }
-        
-        .action-btn.email {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: white;
-        }
-        
-        .action-btn.website {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            color: white;
+            transform: translateY(0);
         }
         
         /* ========== 테이블 뷰 ========== */
@@ -730,7 +697,7 @@
         }
         
         .business-table thead {
-            background: linear-gradient(135deg, var(--bg-gray) 0%, #f1f5f9 100%);
+            background: var(--bg-gray);
         }
         
         .business-table th {
@@ -797,8 +764,8 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            border: none;
-            background: var(--bg-gray);
+            border: 2px solid var(--border-color);
+            background: var(--bg-light);
             cursor: pointer;
             font-size: 1.125rem;
             text-decoration: none;
@@ -807,32 +774,13 @@
             justify-content: center;
             transition: var(--transition);
             color: var(--text-dark);
-            box-shadow: var(--shadow-xs);
         }
         
         .table-action-btn:hover {
-            transform: scale(1.15);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .table-action-btn.phone {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: var(--text-dark);
             color: white;
-        }
-        
-        .table-action-btn.map {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-        }
-        
-        .table-action-btn.email {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: white;
-        }
-        
-        .table-action-btn.website {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            color: white;
+            border-color: var(--text-dark);
+            transform: scale(1.1);
         }
         
         /* ========== 페이지네이션 ========== */
@@ -897,8 +845,6 @@
         .page-btn:hover:not(:disabled) {
             border-color: var(--primary-color);
             color: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
         }
         
         .page-btn:disabled {
@@ -907,10 +853,9 @@
         }
         
         .page-btn[aria-current="page"] {
-            background: var(--primary-gradient);
+            background: var(--primary-color);
             color: white;
-            border-color: transparent;
-            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
         }
         
         .page-ellipsis {
@@ -936,19 +881,19 @@
         }
         
         .location-notice.success {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            background: #f0fdf4;
             border-color: #86efac;
             color: #166534;
         }
         
         .location-notice.error {
-            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            background: #fef2f2;
             border-color: #fca5a5;
             color: #991b1b;
         }
         
         .location-notice.info {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            background: #eff6ff;
             border-color: #93c5fd;
             color: #1e40af;
         }
@@ -956,7 +901,7 @@
         .location-btn {
             margin-left: auto;
             padding: 0.625rem 1.25rem;
-            background: var(--primary-gradient);
+            background: var(--primary-color);
             color: white;
             border: none;
             border-radius: var(--border-radius-full);
@@ -964,12 +909,11 @@
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: var(--shadow-sm);
         }
         
         .location-btn:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
         }
         
         .location-btn:active {
@@ -1768,10 +1712,10 @@
                     .join('');
                 
                 const emailBtn = business.email ? 
-                    `<a href="mailto:${escapeHtml(business.email)}" class="action-btn email" aria-label="이메일">📧</a>` : '';
+                    `<a href="mailto:${escapeHtml(business.email)}" class="action-btn" aria-label="이메일">📧</a>` : '';
                 
                 const websiteBtn = business.website ? 
-                    `<a href="https://${escapeHtml(business.website)}" class="action-btn website" target="_blank" rel="noopener noreferrer" aria-label="홈페이지">🌐</a>` : '';
+                    `<a href="https://${escapeHtml(business.website)}" class="action-btn" target="_blank" rel="noopener noreferrer" aria-label="홈페이지">🌐</a>` : '';
                 
                 card.innerHTML = `
                     ${imgHtml}
@@ -1795,8 +1739,8 @@
                             </div>
                         </div>
                         <div class="card-actions">
-                            <a href="tel:${escapeHtml(business.phone)}" class="action-btn phone" aria-label="전화">📞</a>
-                            <a href="${escapeHtml(business.googleMapsUrl)}" class="action-btn map" target="_blank" rel="noopener noreferrer" aria-label="지도">📍</a>
+                            <a href="tel:${escapeHtml(business.phone)}" class="action-btn" aria-label="전화">📞</a>
+                            <a href="${escapeHtml(business.googleMapsUrl)}" class="action-btn" target="_blank" rel="noopener noreferrer" aria-label="지도">📍</a>
                             ${emailBtn}
                             ${websiteBtn}
                         </div>
@@ -1874,10 +1818,10 @@
                     .join('');
                 
                 const emailBtn = business.email ? 
-                    `<a href="mailto:${escapeHtml(business.email)}" class="table-action-btn email" aria-label="이메일">📧</a>` : '';
+                    `<a href="mailto:${escapeHtml(business.email)}" class="table-action-btn" aria-label="이메일">📧</a>` : '';
                 
                 const websiteBtn = business.website ? 
-                    `<a href="https://${escapeHtml(business.website)}" class="table-action-btn website" target="_blank" rel="noopener noreferrer" aria-label="홈페이지">🌐</a>` : '';
+                    `<a href="https://${escapeHtml(business.website)}" class="table-action-btn" target="_blank" rel="noopener noreferrer" aria-label="홈페이지">🌐</a>` : '';
                 
                 row.innerHTML = `
                     <td>${imgHtml}</td>
@@ -1888,8 +1832,8 @@
                     <td>${escapeHtml(business.phone)}</td>
                     <td>
                         <div class="table-actions">
-                            <a href="tel:${escapeHtml(business.phone)}" class="table-action-btn phone" aria-label="전화">📞</a>
-                            <a href="${escapeHtml(business.googleMapsUrl)}" class="table-action-btn map" aria-label="지도" target="_blank" rel="noopener noreferrer">📍</a>
+                            <a href="tel:${escapeHtml(business.phone)}" class="table-action-btn" aria-label="전화">📞</a>
+                            <a href="${escapeHtml(business.googleMapsUrl)}" class="table-action-btn" aria-label="지도" target="_blank" rel="noopener noreferrer">📍</a>
                             ${emailBtn}
                             ${websiteBtn}
                         </div>
