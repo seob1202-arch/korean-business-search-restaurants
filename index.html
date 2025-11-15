@@ -946,6 +946,9 @@
             }
         }
         
+        /* ========================================
+           모바일 통계 라벨 수정 지점 
+        ======================================== */
         @media (max-width: 768px) {
             .hero {
                 min-height: 45vh;
@@ -954,9 +957,31 @@
             .hero-content {
                 padding: 2.5rem 1.5rem;
             }
+
+            /* 부제목과 통계 섹션 사이 간격을 줄여서 통계 섹션을 위로 올림 */
+            .hero-subtitle {
+                margin-bottom: 2rem; 
+            }
             
+            /* 통계 섹션을 3열 그리드로 변경 (480px -> 768px로 이동) */
             .hero-stats {
-                gap: 1.5rem;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem; /* 1.5rem -> 1rem */
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            /* 숫자 스타일 (480px -> 768px로 이동) */
+            .stat-number {
+                font-size: 1.875rem;
+                margin-bottom: 0.25rem;
+            }
+
+            /* 라벨 스타일 (480px -> 768px로 이동) */
+            .stat-label {
+                font-size: 0.75rem;
+                display: block; /* 라벨이 항상 보이도록 강제 */
             }
             
             .search-card {
@@ -1020,23 +1045,9 @@
                 font-size: 2rem;
             }
             
-            .hero-stats {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.5rem;
-                width: 100%;
-                padding: 0 1rem;
-            }
-            
-            .stat-number {
-                font-size: 1.875rem;
-                margin-bottom: 0.25rem;
-            }
-
-            .stat-label {
-                font-size: 0.75rem;
-                display: block;
-            }
+            /* 통계(hero-stats, stat-number, stat-label) 관련 규칙은 
+              768px 미디어 쿼리로 이동했으므로 여기서는 삭제합니다.
+            */
             
             .search-input {
                 padding: 1rem 1rem 1rem 3.5rem;
@@ -1075,7 +1086,7 @@
                 전 세계 어디서나
             </div>
             <h1>🌏 한인 업체 검색</h1>
-            <p class="hero-subtitle">국가, 도시, 업종별로 쉽게 찾아보세요</p>
+            <p class="hero-subtitle">국가, 도시, 업종별로 한인 업체를 쉽게 찾아보세요</p>
             <div class="hero-stats">
                 <div class="stat-item">
                     <span class="stat-number" id="total-businesses">-</span>
