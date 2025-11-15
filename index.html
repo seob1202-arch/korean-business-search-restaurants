@@ -947,40 +947,48 @@
         }
         
         /* ========================================
-           모바일 통계 라벨 수정 지점 
+           모바일 통계 라벨 수정 지점 (768px)
         ======================================== */
         @media (max-width: 768px) {
             .hero {
-                min-height: 45vh;
+                /* min-height를 auto로 변경하여 내용물에 맞게 높이 조절 */
+                min-height: auto; 
+                /* 내부 패딩을 주어 높이를 확보 (웨이브 높이 고려) */
+                padding: 6rem 0 8rem 0; 
             }
             
             .hero-content {
-                padding: 2.5rem 1.5rem;
-            }
-
-            /* 부제목과 통계 섹션 사이 간격을 줄여서 통계 섹션을 위로 올림 */
-            .hero-subtitle {
-                margin-bottom: 2rem; 
+                /* 내부 수직 패딩 제거, hero의 패딩이 공간을 만듦 */
+                padding: 0 1.5rem; 
             }
             
-            /* 통계 섹션을 3열 그리드로 변경 (480px -> 768px로 이동) */
+            .hero-badge {
+                margin-bottom: 1.5rem;
+            }
+
+            .hero h1 {
+                margin-bottom: 1rem;
+            }
+
+            .hero-subtitle {
+                margin-bottom: 2.5rem; /* 통계 섹션과의 간격 확보 */
+            }
+            
             .hero-stats {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: 1rem; /* 1.5rem -> 1rem */
+                gap: 1rem;
                 width: 100%;
                 padding: 0 1rem;
             }
 
-            /* 숫자 스타일 (480px -> 768px로 이동) */
             .stat-number {
-                font-size: 1.875rem;
+                font-size: 2rem; /* 폰트 크기 조정 */
                 margin-bottom: 0.25rem;
             }
 
-            /* 라벨 스타일 (480px -> 768px로 이동) */
             .stat-label {
-                font-size: 0.75rem;
+                font-size: 0.8125rem; /* 폰트 크기 살짝 키움 */
                 display: block; /* 라벨이 항상 보이도록 강제 */
             }
             
@@ -1046,7 +1054,7 @@
             }
             
             /* 통계(hero-stats, stat-number, stat-label) 관련 규칙은 
-              768px 미디어 쿼리로 이동했으므로 여기서는 삭제합니다.
+              768px 미디어 쿼리에서 이미 처리되었으므로 여기서는 중복 선언 안함
             */
             
             .search-input {
@@ -1724,7 +1732,7 @@
                     : `data-src="${escapeHtml(b.image)}" loading="lazy"`;
                 const tags = b.services.map(s => `<span class="tag">${escapeHtml(s)}</span>`).join('');
                 const email = b.email ? `<a href="mailto:${escapeHtml(b.email)}" class="table-action-btn" title="이메일">${ICONS.email}</a>` : '';
-                const website = b.website ? `<a href="https://${escapeHtml(b.website)}" target="_blank" rel="noopener" class="table-action-btn" title="웹사이트">${ICONS.web}</a>` : '';
+                const website = b.website ? `<a href="https://post.naver.com/${escapeHtml(b.website)}" target="_blank" rel="noopener" class="table-action-btn" title="웹사이트">${ICONS.web}</a>` : '';
                 
                 row.innerHTML = `
                     <td><img ${imgAttr} alt="${escapeHtml(b.businessName)}" class="table-image"></td>
